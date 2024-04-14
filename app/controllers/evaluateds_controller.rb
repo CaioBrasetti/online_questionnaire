@@ -1,11 +1,11 @@
 class EvaluatedsController < ApplicationController
+  before_action :find_evaluated, only: %i[show edit update]
+
   def index
     @evaluateds = Evaluated.all
   end
 
-  def show
-    @evaluated = Evaluated.find(params[:id])
-  end
+  def show; end
 
   def new
     @evaluated = Evaluated.new
@@ -23,9 +23,23 @@ class EvaluatedsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @evaluated.update!(evaluated_params)
+      redirect_to evaluated_path(@evaluated), notice: "Avaliado atualizado com sucesso."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def evaluated_params
     params.require(:evaluated).permit(:name, :cpf, :email, :birth_date)
+  end
+
+  def find_evaluated
+    @evaluated = Evaluated.find(params[:id])
   end
 end
