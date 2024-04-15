@@ -1,0 +1,17 @@
+<div class="wrap">
+  <% @evaluateds.each do |evaluated| %>
+    <div class="card">
+      <div class="top">
+        <h1><%= evaluated.name %></h1>
+      </div>
+      <div class="bottom">
+        <p><span>CPF:</span> <%= evaluated.cpf %></p>
+        <p><span>E-mail:</span> <%= evaluated.email %></p>
+        <p><span>Data de nascimento:</span> <%= evaluated.birth_date.strftime("%d/%m/%Y") %></p>
+        <div class="sign">
+          <a href='#' class='button'>Ver mais</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

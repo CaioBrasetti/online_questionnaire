@@ -1,1 +1,15 @@
-<h1>Psychologists#index</h1>
+<h1>Bem vindo <%= current_user.psychologist.name %></h1>
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: psychologists_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Pesquise por Nome ou CPF"
+        %>
+      <%= submit_tag "Pesquisar", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<%= render "evaluateds/cards" %>

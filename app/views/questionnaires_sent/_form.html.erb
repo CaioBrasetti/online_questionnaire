@@ -1,0 +1,27 @@
+<div class="container">
+  <%= form_with model: @questionnaires_sent, local: true do |form| %>
+    <div class="field">
+      <%= form.label :nome %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :cpf %>
+      <%= form.text_field :cpf %>
+    </div>
+
+    <div class="field">
+      <%= form.label :email %>
+      <%= form.email_field :email %>
+    </div>
+
+    <div class="field">
+      <%= form.label :data_de_nascimento %>
+      <%= form.date_field :birth_date %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Enviar' %>
+    </div>
+  <% end %>
+</div>

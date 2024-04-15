@@ -7,3 +7,32 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+user = User.create!(email: "admin@admin.com", password: "123123")
+
+Psychologist.create!(name: "Lindinha", user: user.first)
+
+Questionnaire.create!( title: "Teste1",
+  questions: [
+    {
+      pergunta: "Pergunta1",
+      resposta: ["3", "2", "1", "0"]
+    },
+    {
+      pergunta: "Pergunta2",
+      resposta: ["3", "2", "1", "0"]
+    },
+    {
+      pergunta: "Pergunta3",
+      resposta: ["3", "2", "1", "0"]
+    },
+    {
+      pergunta: "Pergunta4",
+      resposta: ["3", "2", "1", "0"]
+    },
+    {
+      pergunta: "Pergunta5",
+      resposta: ["3", "2", "1", "0"]
+    }
+  ]
+)
