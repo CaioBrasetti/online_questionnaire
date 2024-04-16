@@ -25,7 +25,7 @@
   <div class="row mt-3">
     <div class="col">
       <!-- Formulário -->
-      <%= form_with url: send_mail_evaluateds_path, method: :post, local: true do |form| %>
+      <%= form_with url: create_questionnaire_sent_evaluateds_path, method: :post, local: true do |form| %>
          <div class="mb-3">
           <label for="questionnaire" class="form-label">Selecione o Questionário</label>
           <%= form.select :questionnaire_id, @questionnaires.collect { |q| [q.title, q.id] }, {}, { class: "form-select", id: "questionnaire" } %>

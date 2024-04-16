@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :psychologists, only: [:index]
   resources :evaluateds do
     collection do
-      post 'send_mail'
+      post :create_questionnaire_sent
       get :show
     end
   end

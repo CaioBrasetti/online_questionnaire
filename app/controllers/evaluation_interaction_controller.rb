@@ -1,4 +1,6 @@
 class EvaluationInteractionController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def validate; end
 
   def check_patient
@@ -26,7 +28,7 @@ class EvaluationInteractionController < ApplicationController
 
     session.delete(:questionnaires_sent)
 
-    @questionnaires_sent.update(answers: params[:responses], status: "Respondido")
+    @questionnaires_sent.update(answers: params[:responses], status: "Finalizado")
 
     redirect_to confirmation_evaluation_interaction_path, notice: 'Respostas enviadas com sucesso!'
   end

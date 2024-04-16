@@ -10,11 +10,24 @@ class EvaluatedsController < ApplicationController
     @questionnaires = Questionnaire.all
   end
 
-  def send_mail
+  def create_questionnaire_sent
+    psychologist = Psychologist.find_by(users_id: current_user[:id])
+
+    questionnaires_sent = QuestionnaireSent.create!(
+      psychologist_id: psychologist.id,
+      evaluated_id: params[:evaluated_id],
+      questionnaire_id: params[:questionnaire_id],
+      status: "Pendente"
+    )
+
+    send_mail(questionnaires_sent)
+  end
+
+  def send_mail(questionnaires_sent)
     evaluated = Evaluated.find(params[:evaluated_id])
     questionnaire = Questionnaire.find(params[:questionnaire_id])
 
-    QuestionnaireSendMailer.send_questionnaire_link(evaluated, questionnaire).deliver_now
+    QuestionnaireSendMailer.send_questionnaire_link(evaluated, questionnaire, questionnaires_sent).deliver_now
 
     redirect_to evaluateds_path, notice: 'Email enviado com sucesso!'
   end

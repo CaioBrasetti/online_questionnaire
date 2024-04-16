@@ -1,0 +1,22 @@
+<h1>Detalhes da avaliação: "<%= @questionnaire_sent.questionnaire.title %>"" do avalidado: <%= @questionnaire_sent.evaluated.name %></h1>
+
+<div>
+  <strong>Psicólogo que solicitou o teste:</strong>
+  <%= @questionnaire_sent.psychologist.name %>
+</div>
+
+<div>
+  <strong>Respostas:</strong>
+  <ul style="list-style-type: none;">
+    <% @questionnaire_sent.answers.each do |key, value| %>
+      <li>
+        <strong><%= key %>:</strong> <%= value %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+  <strong>Pontos:</strong>
+  <%= @questionnaire_sent.points %>
+</div>
