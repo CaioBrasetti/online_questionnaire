@@ -7,16 +7,16 @@
 @import "bootstrap";
 @import "font-awesome";
 
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif:400,700);
 // Your CSS partials
 @import "components/index";
-@import "pages/index";
+@import "pages/card";
 
 * {
   margin: 0;
   padding: 0;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif:400,700);
 
 html, body {
   height: 100%;
@@ -28,66 +28,7 @@ body {
   font-family: 'Droid Sans', sans-serif;
 }
 
-.wrap {
-  max-width: 100%;
-  width: 90%;
-  margin: 0 auto;
-  text-align: left;
-  color: #989A8F;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.card {
-  background-color: #ffffff;
-  width: calc(33.33% - 20px);
-  margin-top: 20px;
+h1 {
+  top: 10px;
   position: relative;
-  height: 400px; /* Ajuste a altura conforme necessário */
-  height: 26vh; /* Ajuste responsivo da altura em unidades de viewport */
-}
-
-.top {
-  background-color: #947B2F;
-  padding: 1em;
-  color: white;
-}
-
-.bottom {
-  padding: 1em;
-}
-
-.sign {
-  position: absolute; /* Define a posição absoluta para o botão */
-  bottom: 10px; /* Distância do botão até a parte inferior do card */
-  right: 40; /* Distância do botão até a borda direita do card */
-  transform: translate(-50%, -18%);
-}
-
-.button {
-  border: 1px solid #989A8F;
-  padding: 10px 20px;
-  border-radius: 6px;
-  color: #989A8F;
-  font-size: 14px;
-  text-decoration: none;
-}
-
-@media screen and (min-width: 1024px) {
-  .card {
-    width: calc(25% - 20px); /* Mostrar quatro cards por linha em telas maiores */
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .card {
-    width: calc(50% - 20px); /* Mostrar dois cards por linha em telas menores */
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .card {
-    width: calc(100% - 20px); /* Mostrar apenas um card por linha em telas pequenas */
-  }
 }
