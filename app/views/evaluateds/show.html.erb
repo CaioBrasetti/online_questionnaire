@@ -6,6 +6,10 @@
         <div class="card-body">
           <h5 class="card-title">Detalhes do Paciente</h5>
           <p class="card-text">Nome: <%= @evaluated.name %></p>
+          <p class="card-text">CPF: <%= @evaluated.cpf %></p>
+          <p class="card-text">E-mail: <%= @evaluated.email %></p>
+          <p class="card-text">Data de nascimento: <%= @evaluated.birth_date.strftime("%d/%m/%Y") %></p>
+
         </div>
       </div>
     </div>
@@ -14,10 +18,14 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Questionários</h5>
-          <% @questionnaires_sent.each do |questionnaire_sent| %>
-            <p><%= questionnaire_sent.questionnaire.title %> - <%= questionnaire_sent.status %></p>
-            <% if questionnaire_sent.status == "Finalizado" %>
-              <%= link_to 'Ver mais', questionnaires_sent_path(questionnaire_sent.id) %>
+          <% if @questionnaires_sent.blank? %>
+            <p class="card-text">Este avaliado ainda não possui nenhum questionário enviado.</p>
+          <% else %>
+            <% @questionnaires_sent.each do |questionnaire_sent| %>
+              <p><%= questionnaire_sent.questionnaire.title %> - <%= questionnaire_sent.status %></p>
+              <% if questionnaire_sent.status == "Finalizado" %>
+                <%= link_to 'Ver mais', questionnaires_sent_path(questionnaire_sent.id) %>
+              <% end %>
             <% end %>
           <% end %>
         </div>
