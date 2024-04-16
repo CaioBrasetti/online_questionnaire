@@ -10,9 +10,9 @@
 
 user = User.create!(email: "admin@admin.com", password: "123123")
 
-Psychologist.create!(name: "Lindinha", user: user.first)
+psychologist = Psychologist.create!(name: "Vetor Editora", user: user)
 
-Questionnaire.create!( title: "Teste1",
+questionnaire = Questionnaire.create!( title: "Teste2",
   questions: [
     {
       pergunta: "Pergunta1",
@@ -35,4 +35,19 @@ Questionnaire.create!( title: "Teste1",
       resposta: ["3", "2", "1", "0"]
     }
   ]
+)
+
+evaluated = Evaluated.create!(
+  name: "Zézinho",
+  cpf: 11122233344,
+  email: "zezinho@teste.com",
+  birth_date: "10/01/1995".to_date
+)
+
+QuestionnaireSent.create!(
+  psychologist_id: psychologist.id,
+  evaluated_id: evaluated.id,
+  questionnaire_id: questionnaire.id,
+  status: "Enviado",
+  link_email: "linkaqui.com.br"
 )

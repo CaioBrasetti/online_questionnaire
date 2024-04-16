@@ -1,2 +1,37 @@
-<h1>Evaluateds#show</h1>
-<p>Find me in app/views/evaluateds/show.html.erb</p>
+<h1>Detalhes do Avaliado</h1>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Detalhes do Paciente</h5>
+          <p class="card-text">Nome: <%= @evaluated.name %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <!-- Card dos Questionários -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Questionários</h5>
+          <% @questionnaires_sent.each do |questionnaire_sent| %>
+            <p><%= questionnaire_sent.questionnaire.title %> - <%= questionnaire_sent.status %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <!-- Formulário -->
+      <%= form_with url: send_mail_evaluateds_path, method: :post, local: true do |form| %>
+         <div class="mb-3">
+          <label for="questionnaire" class="form-label">Selecione o Questionário</label>
+          <%= form.select :questionnaire_id, @questionnaires.collect { |q| [q.title, q.id] }, {}, { class: "form-select", id: "questionnaire" } %>
+        </div>
+        <%= form.hidden_field :evaluated_id, value: @evaluated.id %>  <!-- Campo oculto para o evaluated_id -->
+        <%= form.submit "Enviar", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

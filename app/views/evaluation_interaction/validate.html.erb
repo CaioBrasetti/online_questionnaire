@@ -1,0 +1,23 @@
+<h2>"Por favor preencha com seus dados"</h2>
+
+<%= form_with url: check_patient_sent_evaluations_path, method: :post, local: true do |form| %>
+  <div>
+    <%= form.label :name, "Nome" %>
+    <%= form.text_field :name, required: true %>
+  </div>
+  <div>
+    <%= form.label :email, "email" %>
+    <%= form.text_field :email, required: true %>
+  </div>
+  <div>
+    <%= form.label :cpf, "CPF" %>
+    <%= form.text_field :cpf, required: true %>
+  </div>
+  <div>
+    <%= form.label :birth_date, "birth_date" %>
+    <%= form.text_field :birth_date, required: true %>
+  </div>
+  
+  <%= form.hidden_field :evaluation_id, value: params[:evaluation_id] %>
+  <%= form.submit "Validar" %>
+<% end %>

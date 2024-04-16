@@ -9,7 +9,7 @@
         <p><span>E-mail:</span> <%= evaluated.email %></p>
         <p><span>Data de nascimento:</span> <%= evaluated.birth_date.strftime("%d/%m/%Y") %></p>
         <div class="sign">
-          <a href='#' class='button'>Ver mais</a>
+          <%= link_to 'Ver mais', evaluated_path(evaluated) %>
         </div>
       </div>
     </div>

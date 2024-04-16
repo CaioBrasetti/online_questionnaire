@@ -1,0 +1,14 @@
+<h1><%= @questions.title %></h1>
+
+<%= form_with(url: submit_evaluation_interaction_path, method: :post) do |f| %>
+  <% @questions.questions.each_with_index do |question, index| %>
+    <div>
+      <p><%= question["pergunta"] %></p>
+      <% question["resposta"].each do |option| %>
+        <%= f.radio_button "responses[pergunta#{index + 1}]", option, id: "response_#{index + 1}_#{option}", :checked => true %>
+        <%= f.label "response_#{index + 1}_#{option}", option %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= f.submit "Enviar Respostas" %>
+<% end %>

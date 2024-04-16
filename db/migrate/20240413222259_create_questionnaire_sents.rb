@@ -6,7 +6,7 @@ class CreateQuestionnaireSents < ActiveRecord::Migration[7.1]
       t.references :questionnaire, type: :uuid, null: false, foreign_key: true
       t.string :status
       t.string :link_email
-      t.string :answers
+      t.json :answers
 
       t.timestamps
     end

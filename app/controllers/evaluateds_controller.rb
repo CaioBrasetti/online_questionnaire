@@ -5,7 +5,19 @@ class EvaluatedsController < ApplicationController
     @evaluateds = Evaluated.all
   end
 
-  def show; end
+  def show
+    @questionnaires_sent = QuestionnaireSent.where(evaluated_id: @evaluated.id)
+    @questionnaires = Questionnaire.all
+  end
+
+  def send_mail
+    evaluated = Evaluated.find(params[:evaluated_id])
+    questionnaire = Questionnaire.find(params[:questionnaire_id])
+
+    QuestionnaireSendMailer.send_questionnaire_link(evaluated, questionnaire).deliver_now
+
+    redirect_to evaluateds_path, notice: 'Email enviado com sucesso!'
+  end
 
   def new
     @evaluated = Evaluated.new

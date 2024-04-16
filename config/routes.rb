@@ -3,9 +3,30 @@ Rails.application.routes.draw do
   root to: "psychologists#index"
 
   resources :psychologists, only: [:index]
-  resources :evaluateds
+  resources :evaluateds do
+    collection do
+      post 'send_mail'
+      get :show
+    end
+  end
+
+  resources :evaluation_interaction do
+    member do
+      get :show
+      post :submit
+      get :confirmation
+      get :validate_patient
+      post :check_patient
+    end
+  end
   resources :questionnaires
   resources :questionnaires_sent
+
+  resources :evaluations do
+    member do
+      get 'validate'
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

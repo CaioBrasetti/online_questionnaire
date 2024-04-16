@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_13_222259) do
     t.uuid "questionnaire_id", null: false
     t.string "status"
     t.string "link_email"
-    t.string "answers"
+    t.json "answers"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["evaluated_id"], name: "index_questionnaire_sents_on_evaluated_id"
