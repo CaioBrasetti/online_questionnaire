@@ -20,15 +20,28 @@
   position: relative;
   height: auto; /* Adicione esta linha para permitir que a altura seja definida pelo conteúdo */
   background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .top {
   background-color: #947B2F;
   padding: 1em;
   color: white;
+  border-radius: 6px 6px 0 0;
 }
 
 .bottom {
   padding: 1em;
   color: black;
+}
+
+.card:hover {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+  box-shadow: 0 0 15px rgba(105, 93, 30, 0.356);
+}
+
+.card:hover .top {
+  background-color: #242258;
 }
