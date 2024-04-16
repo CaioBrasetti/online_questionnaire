@@ -17,6 +17,11 @@
   padding: 0;
 }
 
+.nav-item.active a {
+  display: inline-block;
+  margin-right: 10px;
+  color: white;
+}
 
 html, body {
   height: 100%;
@@ -31,4 +36,11 @@ body {
 h1 {
   top: 10px;
   position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-item.active a {
+    display: block;
+    margin-bottom: 10px;
+  }
 }
