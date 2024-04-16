@@ -20,7 +20,6 @@ Rails.application.routes.draw do
       get :validate
     end
   end
-  resources :questionnaires
   resources :questionnaires_sent
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
