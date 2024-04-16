@@ -1,4 +1,4 @@
-<h2>"Por favor preencha com seus dados"</h2>
+<h2>Por favor preencha com seus dados</h2>
 
 <%= form_with url: check_patient_evaluation_interaction_path, method: :post, local: true do |form| %>
   <div>
@@ -6,7 +6,7 @@
     <%= form.text_field :name, required: true %>
   </div>
   <div>
-    <%= form.label :email, "email" %>
+    <%= form.label :email, "E-mail" %>
     <%= form.text_field :email, required: true %>
   </div>
   <div>
@@ -14,8 +14,8 @@
     <%= form.text_field :cpf, required: true %>
   </div>
   <div>
-    <%= form.label :birth_date, "birth_date" %>
-    <%= form.text_field :birth_date, required: true %>
+    <%= form.label :birth_date, "Data de nascimento" %>
+    <%= form.date_field  :birth_date, required: true %>
   </div>
 
   <%= form.hidden_field :evaluation_id, value: params[:evaluation_id] %>

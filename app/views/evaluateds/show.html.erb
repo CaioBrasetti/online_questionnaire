@@ -16,7 +16,9 @@
           <h5 class="card-title">Questionários</h5>
           <% @questionnaires_sent.each do |questionnaire_sent| %>
             <p><%= questionnaire_sent.questionnaire.title %> - <%= questionnaire_sent.status %></p>
-            <%= link_to 'Ver mais', questionnaires_sent_path(questionnaire_sent.id) %>
+            <% if questionnaire_sent.status == "Finalizado" %>
+              <%= link_to 'Ver mais', questionnaires_sent_path(questionnaire_sent.id) %>
+            <% end %>
           <% end %>
         </div>
       </div>
