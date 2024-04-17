@@ -31,6 +31,8 @@ gem 'pg_search'
 
 gem 'letter_opener'
 
+gem 'cpf_cnpj'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
