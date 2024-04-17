@@ -61,8 +61,10 @@ gem "sassc-rails"
 group :development, :test do
   gem "dotenv-rails"
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
+  gem "pry"
 end
 
 group :development do
@@ -76,11 +78,12 @@ group :development do
   # gem "spring"
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
-  gem "pry"
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "faker"
+  gem 'rails-controller-testing'
 end
