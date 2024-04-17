@@ -8,7 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-user = User.create!(email: "admin@admin.com", password: "123123")
+user = User.create!(email: "alfredovoldev@admin.com.br", password: "123123")
 
 psychologist = Psychologist.create!(name: "Vetor Editora", user: user)
 
@@ -37,16 +37,34 @@ questionnaire = Questionnaire.create!( title: "Satisfação na Vida",
   ]
 )
 
-evaluated = Evaluated.create!(
-  name: "Zézinho",
-  cpf: 11122233344,
-  email: "zezinho@teste.com",
-  birth_date: "10/01/1995".to_date
+questionnaire2 = Questionnaire.create!( title: "Bem-Estar Emocional",
+  questions: [
+    {
+      pergunta: "Como você se sente em relação ao seu trabalho/estudos atualmente?",
+      resposta: ["Desinteressado", "Desmotivado", "Regular", "Motivado"]
+    },
+    {
+      pergunta: "Como você lida com situações estressantes?",
+      resposta: ["Paralisado", "Sobrecarregado", "Ansioso", "Adaptável"]
+    },
+    {
+      pergunta: "Como você se sente em relação aos seus relacionamentos interpessoais?",
+      resposta: ["Isolado", "Solitário", "Próximo de alguns", "Apoiado"]
+    },
+    {
+      pergunta: "Como você descreveria sua autoestima?",
+      resposta: ["Sem confiança", "Crítico", "Variável", "Confiança"]
+    },
+    {
+      pergunta: "Como você lida com mudanças em sua vida?",
+      resposta: ["Desorientado", "Ansioso", "Ajustável", "Adaptável"]
+    }
+  ]
 )
 
-QuestionnaireSent.create!(
-  psychologist_id: psychologist.id,
-  evaluated_id: evaluated.id,
-  questionnaire_id: questionnaire.id,
-  status: "Enviado"
+evaluated = Evaluated.create!(
+  name: "Caio Brasetti",
+  cpf: 47699153812,
+  email: "caiobrasetti@teste.com",
+  birth_date: "15/06/1991".to_date
 )
