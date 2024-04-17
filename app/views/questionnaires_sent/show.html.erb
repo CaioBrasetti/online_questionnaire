@@ -1,22 +1,30 @@
-<h1>Detalhes da avaliação: "<%= @questionnaire_sent.questionnaire.title %>"" do avalidado: <%= @questionnaire_sent.evaluated.name %></h1>
+<div class="container my-5 py-5 border rounded bg-light">
+  <h2 class="text-center mb-5">Detalhes da avaliação: "<%= @questionnaire_sent.questionnaire.title %>" do avaliado: <%= @questionnaire_sent.evaluated.name %></h2>
 
-<div>
-  <strong>Psicólogo que solicitou o teste:</strong>
-  <%= @questionnaire_sent.psychologist.name %>
-</div>
+  <div class="row mb-4">
+    <div class="col-12">
+      <h3>Psicólogo que solicitou o teste:</h3>
+      <p class="lead"><%= @questionnaire_sent.psychologist.name %></p>
+    </div>
+  </div>
 
-<div>
-  <strong>Respostas:</strong>
-  <ul style="list-style-type: none;">
-    <% @questionnaire_sent.answers.each do |key, value| %>
-      <li>
-        <strong><%= key %>:</strong> <%= value %>
-      </li>
-    <% end %>
-  </ul>
-</div>
+  <div>
+    <strong>Respostas:</strong>
+    <ul class="list-unstyled">
+      <% @formatted_questions_and_answers.each do |params| %>
+        <li class="mb-3">
+          <strong><%= params[:question] %>:</strong>
+          <div><%= params[:answer] %></div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 
-<div>
-  <strong>Pontos:</strong>
-  <%= @questionnaire_sent.points %>
+  <div class="row">
+    <div class="col-12">
+      <h2>Pontos:
+        <p class="lead"><%= @questionnaire_sent.points %></p>
+      </h2>
+    </div>
+  </div>
 </div>

@@ -1,14 +1,22 @@
-<h1><%= @questions.title %></h1>
+<h1 class="text-center my-5"><%= @questions.title %></h1>
 
-<%= form_with(url: submit_evaluation_interaction_path, method: :post) do |f| %>
-  <% @questions.questions.each_with_index do |question, index| %>
-    <div>
-      <p><%= question["pergunta"] %></p>
-      <% question["resposta"].each do |option| %>
-        <%= f.radio_button "responses[pergunta#{index + 1}]", option, id: "response_#{index + 1}_#{option}", :checked => true %>
-        <%= f.label "response_#{index + 1}_#{option}", option %>
+<%= form_with(url: submit_evaluation_interaction_path, method: :post, class: "container") do |f| %>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <% @questions.questions.each_with_index do |question, index| %>
+        <div class="mb-3 text-center">
+          <strong><p class="font-weight-bold mt-5"><%= question["pergunta"] %></p></strong>
+          <% question["resposta"].each_with_index do |option, idx| %>
+            <div class="form-check form-check-inline">
+              <%= f.radio_button "responses[#{question['pergunta'].parameterize}]", option, id: "response_#{index + 1}_#{idx}", class: "form-check-input", checked: idx == 3%>
+              <%= f.label "response_#{index + 1}_#{idx}", option, class: "form-check-label" %>
+            </div>
+          <% end %>
+        </div>
       <% end %>
+      <div class="mt-4 d-flex justify-content-center">
+        <%= f.submit "Enviar Respostas", class: "btn btn-primary mb-5" %>
+      </div>
     </div>
-  <% end %>
-  <%= f.submit "Enviar Respostas" %>
+  </div>
 <% end %>

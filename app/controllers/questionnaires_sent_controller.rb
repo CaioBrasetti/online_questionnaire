@@ -4,6 +4,19 @@ class QuestionnairesSentController < ApplicationController
   def show
     calculate_points unless find_questionnaires_sent.points.positive?
     @questionnaire_sent = find_questionnaires_sent
+    @questions = @questionnaire_sent.questionnaire.questions
+
+    @formatted_questions_and_answers = []
+
+    @questionnaire_sent.answers.each do |key, value|
+      @questions.each do |question|
+        next unless key.downcase == question["pergunta"].parameterize
+
+        @formatted_questions_and_answers << { question: question["pergunta"], answer: value }
+      end
+    end
+
+    @formatted_questions_and_answers
   end
 
   private
@@ -18,7 +31,7 @@ class QuestionnairesSentController < ApplicationController
       q = answer[0]
       a = answer[1]
       questions.each do |question|
-        next unless q.downcase == question["pergunta"].downcase
+        next unless q.downcase == question["pergunta"].parameterize
 
         question["resposta"].each_with_index do |resp, index|
           next unless a == resp

@@ -15,8 +15,7 @@ Rails.application.routes.draw do
       get :show
       post :submit
       get :confirmation
-      get :validate_patient
-      post :check_patient
+      post :check_evaluated
       get :validate
     end
   end

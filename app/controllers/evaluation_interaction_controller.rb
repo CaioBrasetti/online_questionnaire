@@ -3,10 +3,10 @@ class EvaluationInteractionController < ApplicationController
 
   def validate; end
 
-  def check_patient
+  def check_evaluated
     @evaluated = Evaluated.find_by(name: params[:name], email: params[:email], cpf: params[:cpf], birth_date: params[:birth_date].to_date)
     url = request.original_url
-    updated_url = url.sub('check_patient', 'validate')
+    updated_url = url.sub('check_evaluated', 'validate')
 
     if @evaluated
       @questionnaires_sent = QuestionnaireSent.find_by(evaluated_id: @evaluated.id, link_email: updated_url)
@@ -14,8 +14,8 @@ class EvaluationInteractionController < ApplicationController
 
       redirect_to evaluation_interaction_path(id: @questionnaires_sent.questionnaire_id)
     else
-      flash.now[:alert] = 'Dados inválidos, tente novamente.'
-      render :validate_patient_evaluation_interaction
+      flash[:notice] = 'Dados inválidos, tente novamente.'
+      render :validate, status: :unprocessable_entity
     end
   end
 

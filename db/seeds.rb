@@ -12,27 +12,27 @@ user = User.create!(email: "admin@admin.com", password: "123123")
 
 psychologist = Psychologist.create!(name: "Vetor Editora", user: user)
 
-questionnaire = Questionnaire.create!( title: "Teste2",
+questionnaire = Questionnaire.create!( title: "Satisfação na Vida",
   questions: [
     {
-      pergunta: "Pergunta1",
-      resposta: ["3", "2", "1", "0"]
+      pergunta: "Em que medida você se sente insatisfeito com sua vida atualmente?",
+      resposta: ["Muito insatisfeito", "Insatisfeito", "Neutro", "Satisfeito"]
     },
     {
-      pergunta: "Pergunta2",
-      resposta: ["3", "2", "1", "0"]
+      pergunta: "Com que frequência você sente que não consegue lidar com o estresse cotidiano?",
+      resposta: ["Sempre", "Na maioria das vezes", "Às vezes", "Raramente"]
     },
     {
-      pergunta: "Pergunta3",
-      resposta: ["3", "2", "1", "0"]
+      pergunta: "Quão desconfortável você se sente ao expressar suas emoções com pessoas próximas?",
+      resposta: ["Muito desconfortável", "Desconfortável", "Um pouco confortável", "Muito confortável"]
     },
     {
-      pergunta: "Pergunta4",
-      resposta: ["3", "2", "1", "0"]
+      pergunta: "Você acredita que não consegue equilibrar adequadamente seu tempo entre trabalho e lazer?",
+      resposta: ["Sim, sempre", "Na maioria das vezes", "Às vezes", "Raramente"]
     },
     {
-      pergunta: "Pergunta5",
-      resposta: ["3", "2", "1", "0"]
+      pergunta: "Qual é sua opinião sobre a ineficácia da terapia psicológica para resolver problemas emocionais?",
+      resposta: ["Muito ineficaz", "Ineficaz", "Neutra", "Eficaz"]
     }
   ]
 )
@@ -48,6 +48,5 @@ QuestionnaireSent.create!(
   psychologist_id: psychologist.id,
   evaluated_id: evaluated.id,
   questionnaire_id: questionnaire.id,
-  status: "Enviado",
-  link_email: "linkaqui.com.br"
+  status: "Enviado"
 )
